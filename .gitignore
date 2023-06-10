@@ -1,0 +1,12 @@
+env/
+node_modules/
+.vscode/
+src/
+__pycache__/
+*.pyc
+**/settings/local.py
+*.log
+staticfiles/
+*.secret
+package-lock.json
+package.json
