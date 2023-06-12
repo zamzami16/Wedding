@@ -10,3 +10,4 @@ staticfiles/
 *.secret
 package-lock.json
 package.json
+*.sqlite3
