@@ -9,48 +9,38 @@ from rest_framework import (
     authentication,
     exceptions,
 )
+from rest_framework.decorators import action
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 
 from .models import Invitation
-from .serializers import InvitationSerializer
+from .serializers import (
+    InvitationSerializer,
+    InvitationCreateSerializer,
+    InvitationDetailSerializer,
+)
 
 
 class InvitationView(viewsets.ViewSet):
     authentication_classes = (
-        authentication.TokenAuthentication,
         authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
     )
     permission_classes = (permissions.IsAuthenticated,)
-
-    def authenticate(self, request):
-        if not request.user.is_authenticated:
-            raise authentication.AuthenticationFailed(
-                "User is not authenticated"
-            )
-
-        return request.user
-
-    def get_permissions(self):
-        """
-        Instantiates and returns the list of permissions that this view requires.
-        """
-        if self.action == "list":
-            permission_classes = [permissions.IsAuthenticated]
-        return [permission() for permission in permission_classes]
 
     def list(self, request):
         queryset = Invitation.objects.all()
         serializer = InvitationSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def retrive(self, request, pk=None):
+    def retrieve(self, request, pk=None):
         queryset = Invitation.objects.all()
         invitation = get_object_or_404(queryset, pk=pk)
-        serializer = InvitationSerializer(invitation)
+        serializer = InvitationDetailSerializer(invitation)
         return Response(serializer.data)
 
     def create(self, request):
-        serializer = InvitationSerializer(data=request.data)
+        serializer = InvitationCreateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(

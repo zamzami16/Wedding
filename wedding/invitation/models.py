@@ -11,5 +11,8 @@ class Invitation(models.Model):
         _("alamat yang di undang"), max_length=500, null=True
     )
 
+    class Meta:
+        ordering = ("inviter",)
+
     def __str__(self):
         return self.name

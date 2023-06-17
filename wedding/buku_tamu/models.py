@@ -33,6 +33,9 @@ class BukuTamu(models.Model):
     class Meta:
         ordering = ["inviter"]
 
+    def __str__(self):
+        return self.nama
+
     def get_all_ucapan(self):
         """Get all ucapan dan nama dari tamu"""
         pass

@@ -20,6 +20,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/user/", include("users.urls")),
     path("api/buku_tamu/", include("buku_tamu.urls")),
-    # path("api-auth/", include("rest_framework.urls")),
-    # path("api/invitation/", include("invitation.urls")),
+    path("api-auth/", include("rest_framework.urls")),
+    path("api/invitation/", include("invitation.urls")),
 ]

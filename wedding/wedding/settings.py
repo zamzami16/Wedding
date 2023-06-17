@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "rest_framework",
     "rest_framework.authtoken",
-    # "invitation",
+    "invitation",
     "users",
     "buku_tamu",
 ]

@@ -11,3 +11,5 @@ staticfiles/
 package-lock.json
 package.json
 *.sqlite3
+db.sqlite3
+wedding/db.sqlite3
