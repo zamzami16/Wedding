@@ -38,5 +38,5 @@ python manage.py migrate
 Jalankan server
 
 ```bash
-python manage.py runserve
+python manage.py runserver
 ```
