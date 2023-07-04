@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "rest_framework",
     "rest_framework.authtoken",
+    'corsheaders',
     "invitation",
     "users",
     "buku_tamu",
@@ -55,6 +56,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = "wedding.urls"
@@ -146,3 +149,9 @@ REST_FRAMEWORK = {
 
 
 SITE_ID = 1
+
+# cors origin
+CORS_ALLOW_ALL_ORIGINS = True  # allow all
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3030",
+]
